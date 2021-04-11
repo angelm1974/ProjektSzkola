@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="26ab366313ea492bb1162e73a69e051b" Name="Diagram1" >
+        <EntityTypeShape EntityType="ModelSzkoly.czlowiekSet" Width="1.5" PointX="0.75" PointY="4.5" />
+        <EntityTypeShape EntityType="ModelSzkoly.czlowiekSet_nauczyciel" Width="1.5" PointX="3" PointY="3.125" />
+        <EntityTypeShape EntityType="ModelSzkoly.czlowiekSet_student" Width="1.5" PointX="3" PointY="6" />
+        <EntityTypeShape EntityType="ModelSzkoly.OcenaStudentaSet" Width="1.5" PointX="5.25" PointY="4" />
+        <EntityTypeShape EntityType="ModelSzkoly.PrzedmiotSet" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="ModelSzkoly.FK_nauczyciel_inherits_czlowiek" />
+        <AssociationConnector Association="ModelSzkoly.FK_student_inherits_czlowiek" />
+        <AssociationConnector Association="ModelSzkoly.FK_nauczycielOcenaStudenta" />
+        <AssociationConnector Association="ModelSzkoly.FK_studentOcenaStudenta" />
+        <AssociationConnector Association="ModelSzkoly.FK_PrzedmiotOcenaStudenta" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

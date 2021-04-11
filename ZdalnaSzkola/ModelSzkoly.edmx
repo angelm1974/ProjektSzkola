@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModelSzkoly.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="czlowiekSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Imie" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Nazwisko" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Wiek" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="czlowiekSet_nauczyciel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="RokZatrudnienia" Type="smallint" Nullable="false" />
+          <Property Name="StazPracy" Type="smallint" Nullable="false" />
+          <Property Name="OcenaSemestralna" Type="decimal" Precision="2" Scale="1" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="czlowiekSet_student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="RokStudiow" Type="smallint" Nullable="false" />
+          <Property Name="NrAlbumu" Type="smallint" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OcenaStudentaSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ocena" Type="decimal" Precision="2" Scale="1" Nullable="false" />
+          <Property Name="DataWstawienia" Type="datetime" Nullable="false" />
+          <Property Name="Semestr" Type="smallint" Nullable="false" />
+          <Property Name="Termin" Type="smallint" Nullable="false" />
+          <Property Name="student_Id" Type="int" Nullable="false" />
+          <Property Name="Przedmiot_Id" Type="int" Nullable="false" />
+          <Property Name="nauczyciel_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrzedmiotSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_nauczyciel_inherits_czlowiek">
+          <End Role="czlowiekSet" Type="Self.czlowiekSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="czlowiekSet_nauczyciel" Type="Self.czlowiekSet_nauczyciel" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="czlowiekSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="czlowiekSet_nauczyciel">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nauczycielOcenaStudenta">
+          <End Role="czlowiekSet_nauczyciel" Type="Self.czlowiekSet_nauczyciel" Multiplicity="1" />
+          <End Role="OcenaStudentaSet" Type="Self.OcenaStudentaSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="czlowiekSet_nauczyciel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OcenaStudentaSet">
+              <PropertyRef Name="nauczyciel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrzedmiotOcenaStudenta">
+          <End Role="PrzedmiotSet" Type="Self.PrzedmiotSet" Multiplicity="1" />
+          <End Role="OcenaStudentaSet" Type="Self.OcenaStudentaSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrzedmiotSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OcenaStudentaSet">
+              <PropertyRef Name="Przedmiot_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_student_inherits_czlowiek">
+          <End Role="czlowiekSet" Type="Self.czlowiekSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="czlowiekSet_student" Type="Self.czlowiekSet_student" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="czlowiekSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="czlowiekSet_student">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_studentOcenaStudenta">
+          <End Role="czlowiekSet_student" Type="Self.czlowiekSet_student" Multiplicity="1" />
+          <End Role="OcenaStudentaSet" Type="Self.OcenaStudentaSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="czlowiekSet_student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OcenaStudentaSet">
+              <PropertyRef Name="student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelSzkolyStoreContainer">
+          <EntitySet Name="czlowiekSet" EntityType="Self.czlowiekSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="czlowiekSet_nauczyciel" EntityType="Self.czlowiekSet_nauczyciel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="czlowiekSet_student" EntityType="Self.czlowiekSet_student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OcenaStudentaSet" EntityType="Self.OcenaStudentaSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrzedmiotSet" EntityType="Self.PrzedmiotSet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_nauczyciel_inherits_czlowiek" Association="Self.FK_nauczyciel_inherits_czlowiek">
+            <End Role="czlowiekSet" EntitySet="czlowiekSet" />
+            <End Role="czlowiekSet_nauczyciel" EntitySet="czlowiekSet_nauczyciel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nauczycielOcenaStudenta" Association="Self.FK_nauczycielOcenaStudenta">
+            <End Role="czlowiekSet_nauczyciel" EntitySet="czlowiekSet_nauczyciel" />
+            <End Role="OcenaStudentaSet" EntitySet="OcenaStudentaSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrzedmiotOcenaStudenta" Association="Self.FK_PrzedmiotOcenaStudenta">
+            <End Role="PrzedmiotSet" EntitySet="PrzedmiotSet" />
+            <End Role="OcenaStudentaSet" EntitySet="OcenaStudentaSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_student_inherits_czlowiek" Association="Self.FK_student_inherits_czlowiek">
+            <End Role="czlowiekSet" EntitySet="czlowiekSet" />
+            <End Role="czlowiekSet_student" EntitySet="czlowiekSet_student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_studentOcenaStudenta" Association="Self.FK_studentOcenaStudenta">
+            <End Role="czlowiekSet_student" EntitySet="czlowiekSet_student" />
+            <End Role="OcenaStudentaSet" EntitySet="OcenaStudentaSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ModelSzkoly" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModelSzkolyContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="czlowiekSet" EntityType="ModelSzkoly.czlowiekSet" />
+          <EntitySet Name="czlowiekSet_nauczyciel" EntityType="ModelSzkoly.czlowiekSet_nauczyciel" />
+          <EntitySet Name="czlowiekSet_student" EntityType="ModelSzkoly.czlowiekSet_student" />
+          <EntitySet Name="OcenaStudentaSet" EntityType="ModelSzkoly.OcenaStudentaSet" />
+          <EntitySet Name="PrzedmiotSet" EntityType="ModelSzkoly.PrzedmiotSet" />
+          <AssociationSet Name="FK_nauczyciel_inherits_czlowiek" Association="ModelSzkoly.FK_nauczyciel_inherits_czlowiek">
+            <End Role="czlowiekSet" EntitySet="czlowiekSet" />
+            <End Role="czlowiekSet_nauczyciel" EntitySet="czlowiekSet_nauczyciel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_student_inherits_czlowiek" Association="ModelSzkoly.FK_student_inherits_czlowiek">
+            <End Role="czlowiekSet" EntitySet="czlowiekSet" />
+            <End Role="czlowiekSet_student" EntitySet="czlowiekSet_student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_nauczycielOcenaStudenta" Association="ModelSzkoly.FK_nauczycielOcenaStudenta">
+            <End Role="czlowiekSet_nauczyciel" EntitySet="czlowiekSet_nauczyciel" />
+            <End Role="OcenaStudentaSet" EntitySet="OcenaStudentaSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_studentOcenaStudenta" Association="ModelSzkoly.FK_studentOcenaStudenta">
+            <End Role="czlowiekSet_student" EntitySet="czlowiekSet_student" />
+            <End Role="OcenaStudentaSet" EntitySet="OcenaStudentaSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrzedmiotOcenaStudenta" Association="ModelSzkoly.FK_PrzedmiotOcenaStudenta">
+            <End Role="PrzedmiotSet" EntitySet="PrzedmiotSet" />
+            <End Role="OcenaStudentaSet" EntitySet="OcenaStudentaSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="czlowiekSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imie" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwisko" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Wiek" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="czlowiekSet_nauczyciel" Relationship="ModelSzkoly.FK_nauczyciel_inherits_czlowiek" FromRole="czlowiekSet" ToRole="czlowiekSet_nauczyciel" />
+          <NavigationProperty Name="czlowiekSet_student" Relationship="ModelSzkoly.FK_student_inherits_czlowiek" FromRole="czlowiekSet" ToRole="czlowiekSet_student" />
+        </EntityType>
+        <EntityType Name="czlowiekSet_nauczyciel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="RokZatrudnienia" Type="Int16" Nullable="false" />
+          <Property Name="StazPracy" Type="Int16" Nullable="false" />
+          <Property Name="OcenaSemestralna" Type="Decimal" Nullable="false" Precision="2" Scale="1" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="czlowiekSet" Relationship="ModelSzkoly.FK_nauczyciel_inherits_czlowiek" FromRole="czlowiekSet_nauczyciel" ToRole="czlowiekSet" />
+          <NavigationProperty Name="OcenaStudentaSet" Relationship="ModelSzkoly.FK_nauczycielOcenaStudenta" FromRole="czlowiekSet_nauczyciel" ToRole="OcenaStudentaSet" />
+        </EntityType>
+        <EntityType Name="czlowiekSet_student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="RokStudiow" Type="Int16" Nullable="false" />
+          <Property Name="NrAlbumu" Type="Int16" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="czlowiekSet" Relationship="ModelSzkoly.FK_student_inherits_czlowiek" FromRole="czlowiekSet_student" ToRole="czlowiekSet" />
+          <NavigationProperty Name="OcenaStudentaSet" Relationship="ModelSzkoly.FK_studentOcenaStudenta" FromRole="czlowiekSet_student" ToRole="OcenaStudentaSet" />
+        </EntityType>
+        <EntityType Name="OcenaStudentaSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ocena" Type="Decimal" Nullable="false" Precision="2" Scale="1" />
+          <Property Name="DataWstawienia" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Semestr" Type="Int16" Nullable="false" />
+          <Property Name="Termin" Type="Int16" Nullable="false" />
+          <Property Name="student_Id" Type="Int32" Nullable="false" />
+          <Property Name="Przedmiot_Id" Type="Int32" Nullable="false" />
+          <Property Name="nauczyciel_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="czlowiekSet_nauczyciel" Relationship="ModelSzkoly.FK_nauczycielOcenaStudenta" FromRole="OcenaStudentaSet" ToRole="czlowiekSet_nauczyciel" />
+          <NavigationProperty Name="czlowiekSet_student" Relationship="ModelSzkoly.FK_studentOcenaStudenta" FromRole="OcenaStudentaSet" ToRole="czlowiekSet_student" />
+          <NavigationProperty Name="PrzedmiotSet" Relationship="ModelSzkoly.FK_PrzedmiotOcenaStudenta" FromRole="OcenaStudentaSet" ToRole="PrzedmiotSet" />
+        </EntityType>
+        <EntityType Name="PrzedmiotSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OcenaStudentaSet" Relationship="ModelSzkoly.FK_PrzedmiotOcenaStudenta" FromRole="PrzedmiotSet" ToRole="OcenaStudentaSet" />
+        </EntityType>
+        <Association Name="FK_nauczyciel_inherits_czlowiek">
+          <End Type="ModelSzkoly.czlowiekSet" Role="czlowiekSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ModelSzkoly.czlowiekSet_nauczyciel" Role="czlowiekSet_nauczyciel" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="czlowiekSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="czlowiekSet_nauczyciel">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_student_inherits_czlowiek">
+          <End Type="ModelSzkoly.czlowiekSet" Role="czlowiekSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ModelSzkoly.czlowiekSet_student" Role="czlowiekSet_student" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="czlowiekSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="czlowiekSet_student">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_nauczycielOcenaStudenta">
+          <End Type="ModelSzkoly.czlowiekSet_nauczyciel" Role="czlowiekSet_nauczyciel" Multiplicity="1" />
+          <End Type="ModelSzkoly.OcenaStudentaSet" Role="OcenaStudentaSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="czlowiekSet_nauczyciel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OcenaStudentaSet">
+              <PropertyRef Name="nauczyciel_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_studentOcenaStudenta">
+          <End Type="ModelSzkoly.czlowiekSet_student" Role="czlowiekSet_student" Multiplicity="1" />
+          <End Type="ModelSzkoly.OcenaStudentaSet" Role="OcenaStudentaSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="czlowiekSet_student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OcenaStudentaSet">
+              <PropertyRef Name="student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrzedmiotOcenaStudenta">
+          <End Type="ModelSzkoly.PrzedmiotSet" Role="PrzedmiotSet" Multiplicity="1" />
+          <End Type="ModelSzkoly.OcenaStudentaSet" Role="OcenaStudentaSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrzedmiotSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OcenaStudentaSet">
+              <PropertyRef Name="Przedmiot_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelSzkolyStoreContainer" CdmEntityContainer="ModelSzkolyContainer">
+          <EntitySetMapping Name="czlowiekSet">
+            <EntityTypeMapping TypeName="ModelSzkoly.czlowiekSet">
+              <MappingFragment StoreEntitySet="czlowiekSet">
+                <ScalarProperty Name="Wiek" ColumnName="Wiek" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="czlowiekSet_nauczyciel">
+            <EntityTypeMapping TypeName="ModelSzkoly.czlowiekSet_nauczyciel">
+              <MappingFragment StoreEntitySet="czlowiekSet_nauczyciel">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OcenaSemestralna" ColumnName="OcenaSemestralna" />
+                <ScalarProperty Name="StazPracy" ColumnName="StazPracy" />
+                <ScalarProperty Name="RokZatrudnienia" ColumnName="RokZatrudnienia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="czlowiekSet_student">
+            <EntityTypeMapping TypeName="ModelSzkoly.czlowiekSet_student">
+              <MappingFragment StoreEntitySet="czlowiekSet_student">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NrAlbumu" ColumnName="NrAlbumu" />
+                <ScalarProperty Name="RokStudiow" ColumnName="RokStudiow" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OcenaStudentaSet">
+            <EntityTypeMapping TypeName="ModelSzkoly.OcenaStudentaSet">
+              <MappingFragment StoreEntitySet="OcenaStudentaSet">
+                <ScalarProperty Name="nauczyciel_Id" ColumnName="nauczyciel_Id" />
+                <ScalarProperty Name="Przedmiot_Id" ColumnName="Przedmiot_Id" />
+                <ScalarProperty Name="student_Id" ColumnName="student_Id" />
+                <ScalarProperty Name="Termin" ColumnName="Termin" />
+                <ScalarProperty Name="Semestr" ColumnName="Semestr" />
+                <ScalarProperty Name="DataWstawienia" ColumnName="DataWstawienia" />
+                <ScalarProperty Name="Ocena" ColumnName="Ocena" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrzedmiotSet">
+            <EntityTypeMapping TypeName="ModelSzkoly.PrzedmiotSet">
+              <MappingFragment StoreEntitySet="PrzedmiotSet">
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
