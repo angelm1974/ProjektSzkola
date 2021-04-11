@@ -19,15 +19,21 @@ namespace ZdalnaSzkola
             var wynik= context.czlowiekSet_nauczyciel.Include("czlowiekSet").ToList();
             nauczycielBindingSource.DataSource = wynik;
             
-            foreach (var item in wynik)
-            {
-                MessageBox.Show(item.czlowiekSet.Imie +" " + item.czlowiekSet.Nazwisko);
-            }
+            //foreach (var item in wynik)
+            //{
+            //    MessageBox.Show(item.czlowiekSet.Imie +" " + item.czlowiekSet.Nazwisko);
+            //}
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmEdytorNauczyciel edytor = new frmEdytorNauczyciel(-1);
+            edytor.ShowDialog();
         }
     }
 }

@@ -33,6 +33,7 @@ namespace ZdalnaSzkola
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListaNauczycieli));
             this.nauczycielBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.nauczycielBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -45,10 +46,6 @@ namespace ZdalnaSzkola
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.nauczycielBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.nauczycielDataGridView = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nauczycielBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.rokZatrudnieniaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colImie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.czlowiekSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,10 +53,14 @@ namespace ZdalnaSzkola
             this.ocenaSemestralnaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ocenaStudentaSetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nauczycielBindingNavigator)).BeginInit();
             this.nauczycielBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nauczycielDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nauczycielBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nauczycielDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // nauczycielBindingNavigator
@@ -100,6 +101,10 @@ namespace ZdalnaSzkola
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Dodaj nowy";
+            // 
+            // nauczycielBindingSource
+            // 
+            this.nauczycielBindingSource.DataSource = typeof(ZdalnaSzkola.czlowiekSet_nauczyciel);
             // 
             // bindingNavigatorCountItem
             // 
@@ -205,34 +210,8 @@ namespace ZdalnaSzkola
             this.nauczycielDataGridView.DataSource = this.nauczycielBindingSource;
             this.nauczycielDataGridView.Location = new System.Drawing.Point(12, 28);
             this.nauczycielDataGridView.Name = "nauczycielDataGridView";
-            this.nauczycielDataGridView.Size = new System.Drawing.Size(850, 236);
+            this.nauczycielDataGridView.Size = new System.Drawing.Size(836, 199);
             this.nauczycielDataGridView.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(769, 308);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 30);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "czlowiekSet";
-            this.dataGridViewTextBoxColumn1.HeaderText = "czlowiekSet";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "czlowiekSet";
-            this.dataGridViewTextBoxColumn2.HeaderText = "czlowiekSet";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // nauczycielBindingSource
-            // 
-            this.nauczycielBindingSource.DataSource = typeof(ZdalnaSzkola.czlowiekSet_nauczyciel);
             // 
             // rokZatrudnieniaDataGridViewTextBoxColumn
             // 
@@ -276,6 +255,38 @@ namespace ZdalnaSzkola
             this.ocenaStudentaSetDataGridViewTextBoxColumn.HeaderText = "OcenaStudentaSet";
             this.ocenaStudentaSetDataGridViewTextBoxColumn.Name = "ocenaStudentaSetDataGridViewTextBoxColumn";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(769, 308);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(107, 30);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "czlowiekSet";
+            this.dataGridViewTextBoxColumn1.HeaderText = "czlowiekSet";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "czlowiekSet";
+            this.dataGridViewTextBoxColumn2.HeaderText = "czlowiekSet";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(12, 308);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(107, 30);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Nowy";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // ListaNauczycieli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -283,6 +294,7 @@ namespace ZdalnaSzkola
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(902, 350);
             this.ControlBox = false;
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.nauczycielDataGridView);
             this.Controls.Add(this.nauczycielBindingNavigator);
@@ -295,8 +307,8 @@ namespace ZdalnaSzkola
             ((System.ComponentModel.ISupportInitialize)(this.nauczycielBindingNavigator)).EndInit();
             this.nauczycielBindingNavigator.ResumeLayout(false);
             this.nauczycielBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nauczycielDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nauczycielBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nauczycielDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,5 +341,6 @@ namespace ZdalnaSzkola
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ocenaStudentaSetDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.Button button2;
     }
 }

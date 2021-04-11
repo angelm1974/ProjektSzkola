@@ -15,14 +15,20 @@ namespace ZdalnaSzkola
         public Form1()
         {
             InitializeComponent();
+            Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.Azure;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ListaNauczycieli ln = new ListaNauczycieli();
-            //ln.StartPosition = 
-            ln.ShowDialog();
 
+
+        }
+
+        private void openToolStripButton_Click(object sender, EventArgs e)
+        {
+            ListaNauczycieli ln = new ListaNauczycieli();
+            ln.MdiParent = this; 
+            ln.Show();
         }
     }
 }
