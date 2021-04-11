@@ -14,16 +14,18 @@ namespace ZdalnaSzkola
     {
         ModelSzkolyContainer context = new ModelSzkolyContainer();
         czlowiekSet mojCzowiek;
-        public frmEdytorNauczyciel(Int32 _Rekord)
+        Int32 _Rekord;
+        public frmEdytorNauczyciel(Int32 _rekord)
         {
             InitializeComponent();
+            _Rekord = _rekord;
             switch (_Rekord)
             {
                 case -1:
                     nowyRekord();
                     break;
                 default:
-                    edytujRekord(_Rekord);
+                    edytujRekord();
                     break;
             }
         }
@@ -35,21 +37,35 @@ namespace ZdalnaSzkola
             mojCzowiek = new czlowiekSet();
         }
 
-        private void edytujRekord(Int32 _Rekord)
+        private void edytujRekord()
         {
-
+            var wynik = context.czlowiekSet_nauczyciel.Include("czlowiekSet").Where(n => n.Id == _Rekord).FirstOrDefault();
+            czlowiekSet_nauczycielBindingSource.DataSource = wynik;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            mojCzowiek.Imie = imieTextBox.Text;
-            mojCzowiek.Nazwisko = nazwiskoTextBox.Text;
-            mojCzowiek.Wiek = (short)wiekNumericUpDown.Value;
-            czlowiekSet_nauczyciel nauczyciel=new czlowiekSet_nauczyciel();
-            nauczyciel.RokZatrudnienia=(short)rokZatrudnieniaNumericUpDown.Value;
-            mojCzowiek.czlowiekSet_nauczyciel = nauczyciel;
-            context.czlowiekSet.Add(mojCzowiek);
+            switch (_Rekord)
+            {
+                case -1:
+                    mojCzowiek.Imie = imieTextBox.Text;
+                    mojCzowiek.Nazwisko = nazwiskoTextBox.Text;
+                    mojCzowiek.Wiek = (short)wiekNumericUpDown.Value;
+                    czlowiekSet_nauczyciel nauczyciel = new czlowiekSet_nauczyciel();
+                    nauczyciel.RokZatrudnienia = (short)rokZatrudnieniaNumericUpDown.Value;
+                    mojCzowiek.czlowiekSet_nauczyciel = nauczyciel;
+                    context.czlowiekSet.Add(mojCzowiek);
+                    break;
+                default:
+
+                    break;
+            }
             context.SaveChanges();
+            Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
             Close();
         }
     }

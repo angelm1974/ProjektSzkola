@@ -204,16 +204,6 @@
   <metadata name="wiekLabel.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAG
-        7AAABuwBHnU4NQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACrSURBVEhLY/j/
-        /z9NMVZBamKsgtTEKJxPLuY2X5zNT35xNvtPHjY/CTID2UwUCygzHIbNTyKbiWYBNg2kY2QzR5AFv3dt
-        +//V1wGrHDpGNpNoC0Dg75PH/79lxmOVR8Ygs2CYJAvA4Pfv/z9nTvz/xcUcqzoQBgIKLICCP6eP//8a
-        4oFL7WC2gJZBRNNIpnkyJQUjmznsLKBxcU3zCocWGKsgNTFWQerh/wwA/jMfwx+75SkAAAAASUVORK5C
-        YII=
-</value>
-  </data>
   <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAG
@@ -225,6 +215,16 @@
         EOOXByCJaKR41ByYlOebLzhvEcvNsSnmoFznmvEtyocs1oynmoN/jO1Djm3qrTfJnJamBm2zTUGi/KHl
         j6dpLouFNFvXtj80kCheFSdWUmoyPvNsPu2qAJkOLjux5uBZiXdL53v+/8suo6LbXdcRDo3OkMm8fzhz
         UQ3OSTU4H8l+ATjMi5Ja6NGTAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAG
+        7AAABuwBHnU4NQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACrSURBVEhLY/j/
+        /z9NMVZBamKsgtTEKJxPLuY2X5zNT35xNvtPHjY/CTID2UwUCygzHIbNTyKbiWYBNg2kY2QzR5AFv3dt
+        +//V1wGrHDpGNpNoC0Dg75PH/79lxmOVR8Ygs2CYJAvA4Pfv/z9nTvz/xcUcqzoQBgIKLICCP6eP//8a
+        4oFL7WC2gJZBRNNIpnkyJQUjmznsLKBxcU3zCocWGKsgNTFWQerh/wwA/jMfwx+75SkAAAAASUVORK5C
+        YII=
 </value>
   </data>
   <metadata name="rokZatrudnieniaLabel.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

@@ -53,8 +53,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.czlowiekSet_nauczycielBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.rokZatrudnieniaNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.czlowiekSet_nauczycielBindingSource = new System.Windows.Forms.BindingSource(this.components);
             imieLabel = new System.Windows.Forms.Label();
             nazwiskoLabel = new System.Windows.Forms.Label();
             wiekLabel = new System.Windows.Forms.Label();
@@ -63,8 +63,8 @@
             this.czlowiekSet_nauczycielBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wiekNumericUpDown)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.czlowiekSet_nauczycielBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rokZatrudnieniaNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.czlowiekSet_nauczycielBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // czlowiekSet_nauczycielBindingNavigator
@@ -279,10 +279,7 @@
             this.button2.Text = "&Anuluj";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // czlowiekSet_nauczycielBindingSource
-            // 
-            this.czlowiekSet_nauczycielBindingSource.DataSource = typeof(ZdalnaSzkola.czlowiekSet_nauczyciel);
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // rokZatrudnieniaLabel
             // 
@@ -305,6 +302,10 @@
             this.rokZatrudnieniaNumericUpDown.Name = "rokZatrudnieniaNumericUpDown";
             this.rokZatrudnieniaNumericUpDown.Size = new System.Drawing.Size(120, 20);
             this.rokZatrudnieniaNumericUpDown.TabIndex = 10;
+            // 
+            // czlowiekSet_nauczycielBindingSource
+            // 
+            this.czlowiekSet_nauczycielBindingSource.DataSource = typeof(ZdalnaSzkola.czlowiekSet_nauczyciel);
             // 
             // frmEdytorNauczyciel
             // 
@@ -329,8 +330,8 @@
             this.czlowiekSet_nauczycielBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wiekNumericUpDown)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.czlowiekSet_nauczycielBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rokZatrudnieniaNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.czlowiekSet_nauczycielBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

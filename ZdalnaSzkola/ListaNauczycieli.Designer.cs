@@ -46,21 +46,20 @@ namespace ZdalnaSzkola
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.nauczycielBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.nauczycielDataGridView = new System.Windows.Forms.DataGridView();
-            this.rokZatrudnieniaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colImie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.czlowiekSet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stazPracyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ocenaSemestralnaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ocenaStudentaSetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wyswietlanyNauczycielBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button2 = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nauczycielBindingNavigator)).BeginInit();
             this.nauczycielBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nauczycielBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nauczycielDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wyswietlanyNauczycielBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // nauczycielBindingNavigator
@@ -101,10 +100,6 @@ namespace ZdalnaSzkola
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Dodaj nowy";
-            // 
-            // nauczycielBindingSource
-            // 
-            this.nauczycielBindingSource.DataSource = typeof(ZdalnaSzkola.czlowiekSet_nauczyciel);
             // 
             // bindingNavigatorCountItem
             // 
@@ -194,66 +189,17 @@ namespace ZdalnaSzkola
             // 
             // nauczycielDataGridView
             // 
+            this.nauczycielDataGridView.AllowUserToAddRows = false;
+            this.nauczycielDataGridView.AllowUserToDeleteRows = false;
             this.nauczycielDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.nauczycielDataGridView.AutoGenerateColumns = false;
             this.nauczycielDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.nauczycielDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.rokZatrudnieniaDataGridViewTextBoxColumn,
-            this.colImie,
-            this.czlowiekSet,
-            this.stazPracyDataGridViewTextBoxColumn,
-            this.ocenaSemestralnaDataGridViewTextBoxColumn,
-            this.idDataGridViewTextBoxColumn,
-            this.ocenaStudentaSetDataGridViewTextBoxColumn});
-            this.nauczycielDataGridView.DataSource = this.nauczycielBindingSource;
             this.nauczycielDataGridView.Location = new System.Drawing.Point(12, 28);
             this.nauczycielDataGridView.Name = "nauczycielDataGridView";
-            this.nauczycielDataGridView.Size = new System.Drawing.Size(836, 199);
+            this.nauczycielDataGridView.ReadOnly = true;
+            this.nauczycielDataGridView.Size = new System.Drawing.Size(794, 177);
             this.nauczycielDataGridView.TabIndex = 1;
-            // 
-            // rokZatrudnieniaDataGridViewTextBoxColumn
-            // 
-            this.rokZatrudnieniaDataGridViewTextBoxColumn.DataPropertyName = "RokZatrudnienia";
-            this.rokZatrudnieniaDataGridViewTextBoxColumn.HeaderText = "RokZatrudnienia";
-            this.rokZatrudnieniaDataGridViewTextBoxColumn.Name = "rokZatrudnieniaDataGridViewTextBoxColumn";
-            // 
-            // colImie
-            // 
-            this.colImie.DataPropertyName = "czlowiekSet.imie";
-            this.colImie.HeaderText = "Imie";
-            this.colImie.Name = "colImie";
-            // 
-            // czlowiekSet
-            // 
-            this.czlowiekSet.DataPropertyName = "czlowiekSet";
-            this.czlowiekSet.HeaderText = "czlowiekSet";
-            this.czlowiekSet.Name = "czlowiekSet";
-            // 
-            // stazPracyDataGridViewTextBoxColumn
-            // 
-            this.stazPracyDataGridViewTextBoxColumn.DataPropertyName = "StazPracy";
-            this.stazPracyDataGridViewTextBoxColumn.HeaderText = "StazPracy";
-            this.stazPracyDataGridViewTextBoxColumn.Name = "stazPracyDataGridViewTextBoxColumn";
-            // 
-            // ocenaSemestralnaDataGridViewTextBoxColumn
-            // 
-            this.ocenaSemestralnaDataGridViewTextBoxColumn.DataPropertyName = "OcenaSemestralna";
-            this.ocenaSemestralnaDataGridViewTextBoxColumn.HeaderText = "OcenaSemestralna";
-            this.ocenaSemestralnaDataGridViewTextBoxColumn.Name = "ocenaSemestralnaDataGridViewTextBoxColumn";
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            // 
-            // ocenaStudentaSetDataGridViewTextBoxColumn
-            // 
-            this.ocenaStudentaSetDataGridViewTextBoxColumn.DataPropertyName = "OcenaStudentaSet";
-            this.ocenaStudentaSetDataGridViewTextBoxColumn.HeaderText = "OcenaStudentaSet";
-            this.ocenaStudentaSetDataGridViewTextBoxColumn.Name = "ocenaStudentaSetDataGridViewTextBoxColumn";
             // 
             // button1
             // 
@@ -287,6 +233,39 @@ namespace ZdalnaSzkola
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "czlowiekSet";
+            this.dataGridViewTextBoxColumn3.HeaderText = "czlowiekSet";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "czlowiekSet";
+            this.dataGridViewTextBoxColumn4.Frozen = true;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Nazwisko";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(141, 308);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(107, 30);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Edytuj";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(265, 308);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(107, 30);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "Usuń";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // ListaNauczycieli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -294,6 +273,8 @@ namespace ZdalnaSzkola
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(902, 350);
             this.ControlBox = false;
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.nauczycielDataGridView);
@@ -309,6 +290,7 @@ namespace ZdalnaSzkola
             this.nauczycielBindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nauczycielBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nauczycielDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wyswietlanyNauczycielBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -333,14 +315,17 @@ namespace ZdalnaSzkola
         private System.Windows.Forms.DataGridView nauczycielDataGridView;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rokZatrudnieniaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colImie;
-        private System.Windows.Forms.DataGridViewTextBoxColumn czlowiekSet;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stazPracyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ocenaSemestralnaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ocenaStudentaSetDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.BindingSource wyswietlanyNauczycielBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn imieDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nazwiskoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rokDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wiekDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button button4;
     }
 }
